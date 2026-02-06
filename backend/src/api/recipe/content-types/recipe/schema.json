@@ -1,0 +1,120 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "recipes"
+    },
+    "prepTime": {
+      "type": "integer"
+    },
+    "cookTime": {
+      "type": "integer"
+    },
+    "servings": {
+      "type": "integer"
+    },
+    "nutrition": {
+      "type": "json"
+    },
+    "tips": {
+      "type": "json"
+    },
+    "substitutions": {
+      "type": "json"
+    },
+    "cuisine": {
+      "type": "enumeration",
+      "enum": [
+        "American",
+        "British",
+        "Canadian",
+        "Chinese",
+        "Croatian",
+        "Dutch",
+        "Egyptian",
+        "Filipino",
+        "French",
+        "Greek",
+        "Indian",
+        "Irish",
+        "Italian",
+        "Jamaican",
+        "Japanese",
+        "Kenyan",
+        "Malaysian",
+        "Mexican",
+        "Moroccan",
+        "Polish",
+        "Portuguese",
+        "Russian",
+        "Spanish",
+        "Thai",
+        "Tunisian",
+        "Turkish",
+        "Ukrainian",
+        "Vietnamese",
+        "Algerian",
+        "Argentinian",
+        "Australian",
+        "Norwegian",
+        "Saudi Arabian",
+        "Slovakian",
+        "Syrian",
+        "Uruguayan",
+        "Venezuelan"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "breakfast",
+        "lunch",
+        "dinner",
+        "snack",
+        "dessert"
+      ]
+    },
+    "ingredients": {
+      "type": "json",
+      "required": true
+    },
+    "instructions": {
+      "type": "json",
+      "required": true
+    },
+    "isPublic": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "saved_recipes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::saved-recipe.saved-recipe",
+      "mappedBy": "recipe"
+    }
+  }
+}
