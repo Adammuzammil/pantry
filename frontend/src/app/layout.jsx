@@ -22,10 +22,10 @@ export default function RootLayout({ children }) {
           <Header />
           <main>{children}</main>
           {/* Footer */}
-          <footer className="py-8 px-4 border-t">
+          <footer className="py-8 px-4 border-t bg-stone-900">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-6">
               <div className="flex items-center gap-3"></div>
-              <p className="text-stone-500 text-sm">Made with 💗 by Pantry</p>
+              <p className="text-stone-400 text-sm">Made with 💗 by Pantry</p>
             </div>
           </footer>
         </body>

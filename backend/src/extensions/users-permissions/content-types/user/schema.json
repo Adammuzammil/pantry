@@ -83,8 +83,8 @@
     "subscriptionTier": {
       "type": "enumeration",
       "enum": [
-        "free",
-        "pro"
+        "starter",
+        "pantry_pro"
       ]
     },
     "recipes": {
