@@ -2,6 +2,7 @@ import { Inter, JetBrains_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         >
           <Header />
           <main>{children}</main>
+          <Toaster richColors />
           {/* Footer */}
           <footer className="py-8 px-4 border-t bg-stone-900">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-6">
