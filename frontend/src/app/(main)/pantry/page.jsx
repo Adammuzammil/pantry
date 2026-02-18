@@ -114,7 +114,7 @@ const PantryPage = () => {
     fetchItems();
   };
 
-  console.log(itemsData);
+  // console.log(itemsData);
 
   return (
     <div className="min-h-screen bg-stone-50 pt-24 pb-16 px-4">
