@@ -101,6 +101,35 @@ function RecipeContent() {
     }
   }, [recipeData]);
 
+  // Handle save success
+  useEffect(() => {
+    if (saveData?.success) {
+      if (saveData.alreadySaved) {
+        toast.info("Recipe is already in your collection");
+      } else {
+        setIsSaved(true);
+        toast.success("Recipe saved to your collection!");
+      }
+    }
+  }, [saveData]);
+
+  // Handle remove success
+  useEffect(() => {
+    if (removeData?.success) {
+      setIsSaved(false);
+      toast.success("Recipe removed from collection");
+    }
+  }, [removeData]);
+
+  function cleanNutritionValue(value) {
+    return (
+      value
+        ?.replace(/approximately\s*/i, "")
+        .replace(/calories?/i, "")
+        .trim() || ""
+    );
+  }
+
   // No recipe name in URL
   if (!recipeName) {
     return (
@@ -259,7 +288,8 @@ function RecipeContent() {
                 <div className="flex items-center gap-2">
                   <Flame className="w-5 h-5 text-orange-600" />
                   <span className="font-medium">
-                    {recipe.nutrition.calories} cal/serving
+                    {cleanNutritionValue(recipe?.nutrition?.calories)}{" "}
+                    cal/serving
                   </span>
                 </div>
               )}
@@ -375,7 +405,7 @@ function RecipeContent() {
                     <div className="grid grid-cols-2 gap-3">
                       <div className="bg-orange-50 p-3 text-center border-2 border-orange-100">
                         <div className="text-2xl font-bold text-orange-600">
-                          {recipe.nutrition.calories}
+                          {cleanNutritionValue(recipe.nutrition.calories)}
                         </div>
                         <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">
                           Calories
@@ -384,7 +414,7 @@ function RecipeContent() {
 
                       <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
                         <div className="text-2xl font-bold text-stone-900">
-                          {recipe.nutrition.protein}
+                          {cleanNutritionValue(recipe.nutrition.protein)}
                         </div>
                         <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">
                           Protein
@@ -393,7 +423,7 @@ function RecipeContent() {
 
                       <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
                         <div className="text-2xl font-bold text-stone-900">
-                          {recipe.nutrition.carbs}
+                          {cleanNutritionValue(recipe.nutrition.carbs)}
                         </div>
                         <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">
                           Carbs
@@ -402,7 +432,7 @@ function RecipeContent() {
 
                       <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
                         <div className="text-2xl font-bold text-stone-900">
-                          {recipe.nutrition.fat}
+                          {cleanNutritionValue(recipe.nutrition.fat)}
                         </div>
                         <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">
                           Fat

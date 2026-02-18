@@ -562,6 +562,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
         'Syrian',
         'Uruguayan',
         'Venezuelan',
+        'Other',
       ]
     >;
     description: Schema.Attribute.Blocks;
